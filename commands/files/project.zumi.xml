@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="file:///C:/zumiproject/project.zumi.css" type="text/css"?>
 <?xml-stylesheet href="file:///usr/local/share/zumiproject/project.zumi.css" type="text/css"?>
-<project version="1.0">
+<project version="1.0" xmlns:h="http://www.w3.org/1999/xhtml">
     <meta>
         <name>Sample Project</name>
 
@@ -38,40 +38,49 @@
             </dependency>
         </dependencies>
         <steps>
-            <step>
+            <step><h:p>
                 Copy project.zumi.css into /usr/local/share/zumiproject/ (Linux) or C:/zumiproject/.
-            </step>
-            <step>
+            </h:p></step>
+            <step><h:p>
                 Copy .project.zumi.xml.
-            </step>
-            <step>
+            </h:p></step>
+            <step><h:p>
                 Edit this skeleton xml file.
-            </step>
-            <step>
+            </h:p></step>
+            <step><h:p>
                 Dates (start and updated) must be YYYY-MM-DD.
-            </step>
-            <step>
+            </h:p></step>
+            <step><h:p>
                 The only supported build type attribute is
-                "instructions" for now. The "exec" attribute will be for
+                "instructions" for now. The "shell" attribute will be for
                 running a shell script, Makefile, etc.
-            </step>
-            <step>
+            </h:p></step>
+            <step><h:p>
                 Dependency type can either be "software" or "asset", and they all
                 must define a &lt;name&gt;. Search paths are optional.
-            </step>
-            <step>
+            </h:p></step>
+            <step><h:p>
                 To specify an OS-specific search path, use the "os" attribute.
                 Omit to let the OS search for it in its PATH. "os" values supported:
                 "linux", "windows".
-            </step>
-            <step>
+            </h:p></step>
+            <step><h:p>
                 For 'software' dependencies, the 'version' tag must be defined.
                 The 'url' tag is optional.
-            </step>
-            <step>
+            </h:p></step>
+            <step><h:p>
                 To view project information, open this file in a web browser.
-                Only <b>a few</b> HTML formatting elements <i>are supported</i>.
-            </step>
+                Only <h:b>a few</h:b> HTML formatting elements <h:i>are supported</h:i>,
+                but with the caveat of appending the xhtml namespace.
+            </h:p></step>
+            <step><h:p>
+                For the "instructions" build type, it shall contain a "steps" element
+                containing "step" elements (containing XHTML elements).
+            </h:p></step>
+            <step><h:p>
+                For the "shell" build type, it shall contain an "exec" element in place
+                of "steps", consisting of a single string.
+            </h:p></step>
         </steps>
     </build>
 </project>
