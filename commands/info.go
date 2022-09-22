@@ -7,6 +7,7 @@ import (
 	"os/exec"
 	"runtime"
 	"strings"
+	"regexp"
 
 	"projectmgr/config"
 
@@ -122,8 +123,9 @@ func Info() {
 		}
 
 		title_.Printf("build steps\n")
+		space := regexp.MustCompile(`</?.+>`)
 		for _, buildstep := range decodeddata.Build.Steps.Step {
-			norml_.Printf("  - %s\n", config.Strip(buildstep))
+			norml_.Printf("  - %s\n", config.Strip(space.ReplaceAllString(buildstep.Step, "")))
 		}
 		// TODO
 	})

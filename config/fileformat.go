@@ -42,7 +42,12 @@ type DepSearchPath struct {
 
 type ProjectSteps struct {
 	XMLName xml.Name `xml:"steps"`
-	Step    []string `xml:"step"`
+	Step    []ProjectStep `xml:"step"`
+}
+
+type ProjectStep struct {
+	XMLName xml.Name `xml:"step"`
+	Step    string `xml:",innerxml"`
 }
 
 type ProjectMetadata struct {
