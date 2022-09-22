@@ -1,0 +1,210 @@
+/*
+    This CSS file is used by project folders using .project.zumi.xml
+    they might be located in D:/projects.
+*/
+
+project {
+    background-color: #111;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    margin: auto;
+    max-width: 64em;
+    padding: 2em;
+    line-height: 1.5;
+}
+
+* {
+    display: block;
+}
+
+meta name {
+    font-size: 2em;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #888;
+    margin:.5em;
+    text-transform: uppercase;
+    display: block;
+}
+
+meta kind:before {
+    content: 'Type:';
+    font-weight: bold;
+    margin-right: 5.5em;
+}
+
+meta author:before {
+    content: 'Author:';
+    font-weight: bold;
+    margin-right: 4.25em;
+}
+
+meta description:before {
+    content: 'Description:';
+    position: absolute;
+    top: -1.5em;
+    left: -.125em;
+    font-weight: bold;
+}
+
+meta description {
+    font-family: monospace;
+    font-size: 1rem;
+    background-color: #222;
+    border: 1px solid #aaa;
+    padding: .5em;
+    margin:.5em 0;
+    margin-top: 2em;
+    position: relative;
+}
+
+meta dates start:before,
+meta dates updated:before {
+    font-weight: bold;
+}
+
+meta dates start:before {
+    content: 'Started on: ';
+    margin-right: 1.175em;
+}
+
+meta dates updated:before {
+    content: 'Last updated: ';
+}
+
+build:before {
+    content: 'Build';
+    font-size: 1.5em;
+    font-weight: bold;
+    border-bottom: 2px solid #888;
+    margin:.5em 0;
+    text-transform: uppercase;
+    display: block;
+}
+
+build dependencies:before {
+    content: 'Dependencies';
+    font-size: 1.25em;
+    font-weight: bold;
+    margin:.5em 0;
+    text-transform: uppercase;
+    display: block;
+    position: absolute;
+    top: -2.75rem;
+}
+
+build dependencies {
+    position: relative;
+    display: flex;
+    margin-top: 2.25em;
+    flex-flow: row wrap;
+    gap: .5em;
+}
+
+build dependencies dependency {
+    position: relative;
+    border: 1px solid #333;
+    padding: .5em .8em;
+    padding-top: 1em;
+    flex: 1 1 14em;
+}
+
+build dependencies dependency[type="software"]{
+    background-color: #131;
+}
+
+build dependencies dependency[type="asset"]{
+    background-color: #113;
+}
+
+build dependencies dependency[type="software"] version,
+build dependencies dependency url {
+    text-align: center;
+    margin-top: -.25em;
+}
+
+build dependencies dependency name:before {
+    position: absolute;
+    top: 0;
+    left: .5em;
+    font-size: .8em;
+    opacity: .5;
+}
+build dependencies dependency[type="software"] name:before {
+    content: 'Software';
+}
+
+build dependencies dependency[type="asset"] name:before {
+    content: 'Asset';
+}
+
+build dependencies name {
+    font-weight: bold;
+    text-align: center;
+}
+
+build dependencies path:first-of-type {
+    position: relative;
+    margin-top: 1.5em;
+}
+
+build dependencies path:first-of-type:before {
+    content: 'Search paths:';
+    display: block;
+    text-align: left;
+    position: absolute;
+    top: -1.5em;
+    left: -2em;
+    color: #fff;
+    font-weight: bold;
+}
+
+build dependencies {
+    list-style: '> ';
+}
+
+build dependencies path {
+    color: #ccc;
+    display: list-item;
+    margin-left: 2em;
+}
+
+build steps {
+    margin-top: 2.25em;
+    position: relative;
+    list-style: decimal;
+    border: 1px solid #333;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+build steps:before {
+    content: 'Steps';
+    font-size: 1.25em;
+    font-weight: bold;
+    margin:.5em 0;
+    text-transform: uppercase;
+    display: block;
+    position: absolute;
+    top: -2.75rem;
+    left: 0;
+}
+
+build steps step {
+    display: list-item;
+    margin-left: 1.75em;
+    margin-bottom: .5em;
+}
+
+b, i {
+    display: inline;
+}
+
+b {
+    font-weight: bold;
+}
+
+i {
+    font-style: oblique;
+}

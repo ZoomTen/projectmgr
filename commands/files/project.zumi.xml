@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="file:///C:/zumiproject/project.zumi.css" type="text/css"?>
+<?xml-stylesheet href="file:///usr/local/share/zumiproject/project.zumi.css" type="text/css"?>
+<project version="1.0">
+    <meta>
+        <name>Sample Project</name>
+
+        <author>Zumi</author>
+
+        <description>
+            This is a sample project XML thingy.
+        </description>
+
+        <kind>website</kind>
+
+        <dates>
+            <start>2022-01-01</start>
+            <updated>2022-09-21</updated>
+        </dates>
+    </meta>
+
+    <build type="instructions">
+        <dependencies>
+            <dependency type="software">
+                <name>Softworks</name>
+                <version>1.0.0</version>
+                <url>https://softworks.org</url>
+                <!-- search paths -->
+                <path>softworks</path>
+                <path os="linux">/usr/bin/softworks</path>
+                <path os="windows">C:/Program Files (x86)/Softworks/softworks.exe</path>
+            </dependency>
+            <dependency type="asset">
+                <name>CSS files</name>
+                <url>https://softworks.org</url>
+            <!-- search paths -->
+                <path>assets/css</path>
+            </dependency>
+        </dependencies>
+        <steps>
+            <step>
+                Copy project.zumi.css into /usr/local/share/zumiproject/ (Linux) or C:/zumiproject/.
+            </step>
+            <step>
+                Copy .project.zumi.xml.
+            </step>
+            <step>
+                Edit this skeleton xml file.
+            </step>
+            <step>
+                Dates (start and updated) must be YYYY-MM-DD.
+            </step>
+            <step>
+                The only supported build type attribute is
+                "instructions" for now. The "exec" attribute will be for
+                running a shell script, Makefile, etc.
+            </step>
+            <step>
+                Dependency type can either be "software" or "asset", and they all
+                must define a &lt;name&gt;. Search paths are optional.
+            </step>
+            <step>
+                To specify an OS-specific search path, use the "os" attribute.
+                Omit to let the OS search for it in its PATH. "os" values supported:
+                "linux", "windows".
+            </step>
+            <step>
+                For 'software' dependencies, the 'version' tag must be defined.
+                The 'url' tag is optional.
+            </step>
+            <step>
+                To view project information, open this file in a web browser.
+                Only <b>a few</b> HTML formatting elements <i>are supported</i>.
+            </step>
+        </steps>
+    </build>
+</project>

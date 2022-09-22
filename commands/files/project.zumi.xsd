@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="xs3p.xsl"?>
+<x:schema
+  xmlns:x="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified"
+>
+
+  <x:annotation>
+    <x:documentation>
+      Documentation of my target project descriptor format.
+    </x:documentation>
+  </x:annotation>
+
+  <x:element name="project" type="projectType"/>
+
+  <x:complexType name="projectType">
+    <x:all>
+      <x:element name="meta" type="metaType"/>
+      <x:element name="build" type="buildType"/>
+    </x:all>
+    <x:attribute name="version" type="x:string" use="required"/>
+  </x:complexType>
+
+  <x:complexType name="metaType">
+    <x:all>
+      <x:element name="name" type="x:string"/>
+      <x:element name="author" type="x:string"/>
+      <x:element name="description" type="x:string"/>
+      <x:element name="kind" type="x:string"/>
+      <x:element name="dates">
+        <x:complexType>
+          <x:all>
+            <x:element name="start" type="x:date"/>
+            <x:element name="updated" type="x:date"/>
+          </x:all>
+        </x:complexType>
+      </x:element>
+    </x:all>
+  </x:complexType>
+
+  <x:complexType name="buildType">
+    <x:annotation>
+      <x:documentation>
+        `steps` element: Instructions to build or otherwise to put together or make
+        the project work. Should be parsed if build type is set to
+        "instructions".
+      </x:documentation>
+      <x:documentation>
+        `exec` element: The single shell command to run upon building the project.
+        Usually this is a makefile, shell script or some other
+        command. Should be parsed if build type is set to "shell"
+      </x:documentation>
+    </x:annotation>
+    <x:sequence>
+      <x:element name="dependencies">
+        <x:complexType>
+          <x:sequence>
+            <x:element name="dependency" type="dependencyType" minOccurs="1" maxOccurs="unbounded"/>
+          </x:sequence>
+        </x:complexType>
+      </x:element>
+      <x:element name="steps" type="stepType" minOccurs="0"/>
+      <x:element name="exec" type="x:string" minOccurs="0"/>
+    </x:sequence>
+    <x:attribute name="type" use="required">
+      <x:simpleType>
+        <x:restriction base="x:string">
+          <x:enumeration value="instructions"/>
+          <x:enumeration value="shell"/>
+        </x:restriction>
+      </x:simpleType>
+    </x:attribute>
+  </x:complexType>
+
+  <x:complexType name="stepType">
+    <x:sequence>
+      <x:element name="step" maxOccurs="unbounded">
+        <x:complexType>
+          <x:sequence>
+            <x:any namespace="http://www.w3.org/1999/xhtml"
+            minOccurs="1" maxOccurs="unbounded" processContents="lax"/>
+          </x:sequence>
+        </x:complexType>
+      </x:element>
+    </x:sequence>
+  </x:complexType>
+
+  <x:complexType name="dependencyType">
+    <x:sequence>
+      <x:element name="name" type="x:string"/>
+      <x:element name="version" type="x:string" minOccurs="0"/>
+      <x:element name="url" type="x:string" minOccurs="0"/>
+      <x:element name="path" maxOccurs="unbounded">
+        <x:complexType>
+          <x:simpleContent>
+            <x:extension base="x:string">
+              <x:attribute name="os">
+                <x:simpleType>
+                  <x:restriction base="x:string">
+                    <x:enumeration value="linux"/>
+                    <x:enumeration value="windows"/>
+                  </x:restriction>
+                </x:simpleType>
+              </x:attribute>
+            </x:extension>
+          </x:simpleContent>
+        </x:complexType>
+      </x:element>
+    </x:sequence>
+    <x:attribute name="type" use="required">
+      <x:simpleType>
+        <x:restriction base="x:string">
+          <x:enumeration value="software"/>
+          <x:enumeration value="asset"/>
+        </x:restriction>
+      </x:simpleType>
+    </x:attribute>
+  </x:complexType>
+</x:schema>
